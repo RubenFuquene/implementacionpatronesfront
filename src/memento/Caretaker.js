@@ -3,15 +3,11 @@ class Caretaker {
     this.originator = originator;
     this.history = [];
     this.redoStack = [];
-    console.log("Creó");
   }
 
   save() {
     const memento = this.originator.createMemento();
-    console.log(this.history);
     this.history.push(memento);
-    console.log(memento);
-    console.log(this.history);
     this.redoStack = []; // Clear redo stack on new save
   }
 

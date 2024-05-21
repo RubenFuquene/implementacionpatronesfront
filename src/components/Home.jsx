@@ -4,6 +4,7 @@ import Menu from './Menu';
 import MenuItem from './MenuItem';
 import MenuOriginator from '../memento/MenuOriginator';
 import Caretaker from '../memento/Caretaker';
+import AddMenuItemCommand from '../command/AddMenuItemCommand';
 
 const initialMenuStructure = [
   {
@@ -49,12 +50,9 @@ const Home = () => {
   }, [menuStructure]);
 
   const handleAddMenuItem = () => {
-    const newMenuStructure = [
-      ...menuStructure,
-      { name: 'New Item', onClick: () => alert('New Item clicked') }
-    ];
-    caretaker.save();
-    setMenuStructure(newMenuStructure);
+    const newItem = { name: 'New Item', onClick: () => alert('New Item clicked') };
+    const command = new AddMenuItemCommand(caretaker, newItem, menuStructure, setMenuStructure);
+    command.execute();
   };
 
   const handleUndo = () => {

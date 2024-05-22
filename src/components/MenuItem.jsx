@@ -1,10 +1,11 @@
 import React from 'react';
+import { ListItem, ListItemText } from '@mui/material';
 
 const MenuItem = ({ name, onClick }) => {
   return (
-    <li onClick={onClick}>
-      {name}
-    </li>
+    <ListItem button onClick={onClick}>
+      <ListItemText primary={name} />
+    </ListItem>
   );
 };
 
